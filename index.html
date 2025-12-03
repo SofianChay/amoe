@@ -46,7 +46,7 @@
 <section id="overview">
     <h2>Overview</h2>
     <div class="figure-container">
-        <img src="../figures/main_fig_arxiv%20(2).png" alt="AMoE Vision Foundation Model">
+        <img src="figures/main_fig_arxiv%20(2).png" alt="AMoE Vision Foundation Model">
         <p class="caption">
             <strong>AMoE vision foundation model:</strong> A Mixture-of-Experts student is distilled from multiple frozen vision teachers (SigLIP2 and DINOv3).
         </p>
@@ -126,7 +126,7 @@
     </div>
 
     <div class="figure-container">
-        <img src="../figures/token_balanced_batching%20(3).png" alt="Token Balanced Batching">
+        <img src="figures/token_balanced_batching%20(3).png" alt="Token Balanced Batching">
         <p class="caption">
             <strong>Token-balanced batching:</strong> Packing multiple native-resolution images per sequence up to a fixed token budget prevents low-res forgetting and improves performance.
         </p>
@@ -179,7 +179,7 @@
         To investigate the semantic specialization of individual experts within the student model, we analyze the similarity between the representations routed to each expert and the hierarchical features of our teacher models using Linear Centered Kernel Alignment (CKA). This metric allows us to compare representation spaces of differing dimensions and identify which experts specialize in which teacher's features.
     </p>
     <div class="figure-container">
-        <img src="../figures/linear_cka_2.svg" alt="CKA Analysis">
+        <img src="figures/linear_cka_2.svg" alt="CKA Analysis">
         <p class="caption">
             <strong>Linear CKA alignments:</strong> Visualization of alignment between MoE experts and teacher layers. Early layers specialize in specific teachers (e.g., E4 for DINOv3, E5 for SigLIP2), while deeper layers adapt to handle high-magnitude activations from SigLIP2. This confirms that MoE experts specialize to handle conflicting teacher signals.
         </p>
@@ -190,7 +190,7 @@
         We analyze the effectiveness of PHI-S normalization on different token types. While effective for global and patch tokens, we find that the first register token in DINOv3 exhibits a multi-mode distribution. Standard moment estimation fails to capture this structure, leading to incorrect normalization and training instability.
     </p>
     <div class="figure-container">
-        <img src="../figures/phis_pca_maps.png" alt="PHI-S PCA Maps">
+        <img src="figures/phis_pca_maps.png" alt="PHI-S PCA Maps">
         <p class="caption">
             <strong>PHI-S Normalization Analysis:</strong> We analyze the impact of PHI-S on DINOv3 registers. The first register (Row 4) exhibits multi-mode distributions which standard PHI-S fails to normalize correctly, leading to training instability. We thus exclude registers from PHI-S.
         </p>
@@ -201,7 +201,7 @@
         We evaluate the generalization capabilities of our Golden-RoPE strategy against standard Axial RoPE when extrapolating to unseen high resolutions. By normalizing input coordinates based on aspect ratio, Golden-RoPE ensures that the relative frequency distribution remains consistent, preventing the feature degradation observed with fixed integer indices.
     </p>
     <div class="figure-container">
-        <img src="../figures/golden_rope.png" alt="Golden Rope vs Axial">
+        <img src="figures/golden_rope.png" alt="Golden Rope vs Axial">
         <p class="caption">
             <strong>Positional Encoding:</strong> Comparison of feature map consistency across resolutions. Golden RoPE (normalized coordinates) maintains strong scale invariance and feature coherence even at unseen resolutions ($2048 \times 2048$), whereas standard Axial RoPE degrades.
         </p>
@@ -212,7 +212,7 @@
         We provide a qualitative comparison of the learned student representations against the original teacher features. By visualizing the PCA projections, we can assess how well the AMoE student synthesizes the complementary strengths of SigLIP2 (text alignment) and DINOv3 (geometric structure).
     </p>
     <div class="figure-container">
-        <img src="../figures/teachers_gt.png" alt="Teacher GT">
+        <img src="figures/teachers_gt.png" alt="Teacher GT">
         <p class="caption">
             <strong>Qualitative Comparison:</strong> PCA maps showing the student (AMoE) closely reconstructing the teacher distributions. The student retains SigLIP2's text-aware features and DINOv3's geometric consistency.
         </p>
