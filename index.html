@@ -3,39 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AMoE: Agglomerative Mixture-of-Experts Vision Foundation Model</title>
+    <title>AMoE: Agglomerative Mixture-of-Experts</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <header>
-    <h1>AMoE: Agglomerative Mixture-of-Experts Vision Foundation Model</h1>
+    <h1>AMoE</h1>
+    <div class="subtitle" style="margin-bottom: 20px; color: #fff;">Agglomerative Mixture-of-Experts Vision Foundation Model</div>
+    
     <div class="authors">
         Sofian Chaybouti, Sanath Narayan, Yasser Dahou, Phúc H. Lê Khac, Ankit Singh, Ngoc Dung Huynh, Wamiq Reyaz Para, Hilde Kuehne, Hakim Hacid
     </div>
+    
     <div class="links">
+        <!-- Paper Link (Cleaned SVG) -->
         <a href="#" class="btn-link">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17.732 24.269" height="20" style="vertical-align: text-bottom; margin-right: 5px; width: auto;">
-                <g>
-                    <path d="M573.549,280.916l2.266,2.738,6.674-7.84c.353-.47.52-.717.353-1.117a1.218,1.218,0,0,0-1.061-.748h0a.953.953,0,0,0-.712.262Z" transform="translate(-566.984 -271.548)" fill="#bdb9b4"/>
-                    <path d="M579.525,282.225l-10.606-10.174a1.413,1.413,0,0,0-.834-.5,1.09,1.09,0,0,0-1.027.66c-.167.4-.047.681.319,1.206l8.44,10.242h0l-6.282,7.716a1.336,1.336,0,0,0-.323,1.3,1.114,1.114,0,0,0,1.04.69A.992.992,0,0,0,571,293l8.519-7.92A1.924,1.924,0,0,0,579.525,282.225Z" transform="translate(-566.984 -271.548)" fill="#b31b1b"/>
-                    <path d="M584.32,293.912l-8.525-10.275,0,0L573.53,280.9l-1.389,1.254a2.063,2.063,0,0,0,0,2.965l10.812,10.419a.925.925,0,0,0,.742.282,1.039,1.039,0,0,0,.953-.667A1.261,1.261,0,0,0,584.32,293.912Z" transform="translate(-566.984 -271.548)" fill="#bdb9b4"/>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17.732 24.269">
+                <g transform="translate(-566.984 -271.548)">
+                    <path d="M573.549,280.916l2.266,2.738,6.674-7.84c.353-.47.52-.717.353-1.117a1.218,1.218,0,0,0-1.061-.748h0a.953.953,0,0,0-.712.262Z"/>
+                    <path d="M579.525,282.225l-10.606-10.174a1.413,1.413,0,0,0-.834-.5,1.09,1.09,0,0,0-1.027.66c-.167.4-.047.681.319,1.206l8.44,10.242h0l-6.282,7.716a1.336,1.336,0,0,0-.323,1.3,1.114,1.114,0,0,0,1.04.69A.992.992,0,0,0,571,293l8.519-7.92A1.924,1.924,0,0,0,579.525,282.225Z"/>
+                    <path d="M584.32,293.912l-8.525-10.275,0,0L573.53,280.9l-1.389,1.254a2.063,2.063,0,0,0,0,2.965l10.812,10.419a.925.925,0,0,0,.742.282,1.039,1.039,0,0,0,.953-.667A1.261,1.261,0,0,0,584.32,293.912Z"/>
                 </g>
             </svg>
             Paper 
         </a>
+
+        <!-- Code Link -->
         <a href="#" class="btn-link">
-            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" style="vertical-align: text-bottom; margin-right: 5px;">
+            <svg viewBox="0 0 24 24">
                 <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.04-.015-2.04-3.338.72-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.745.085-.73.085-.73 1.2.085 1.83 1.235 1.83 1.235 1.07 1.835 2.805 1.305 3.495.995.105-.775.42-1.305.765-1.605-2.665-.3-5.466-1.335-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.3-.54-1.525.105-3.175 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.645 1.655.24 2.875.12 3.175.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.285 0 .315.225.69.825.57C20.565 21.795 24 17.31 24 12c0-6.63-5.37-12-12-12z"/>
             </svg>
             Code
         </a>
+
+        <!-- Models Link -->
         <a href="#" class="btn-link">
-            <span style="font-size: 1.2em; margin-right: 5px;">🤗</span>
+            <span style="font-size: 1.2em; margin-right: 5px; filter: grayscale(100%);">🤗</span>
             Models
         </a>
+
+        <!-- OpenLVD Link -->
         <a href="#" class="btn-link">
-            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" style="vertical-align: text-bottom; margin-right: 5px;">
+            <svg viewBox="0 0 24 24">
                 <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
             </svg>
             OpenLVD Dataset
@@ -48,17 +58,17 @@
     <div class="figure-container">
         <img src="figures/main_fig_arxiv%20(2).png" alt="AMoE Vision Foundation Model">
         <p class="caption">
-            <strong>AMoE vision foundation model:</strong> A Mixture-of-Experts student is distilled from multiple frozen vision teachers (SigLIP2 and DINOv3).
+            <strong>FIG. 1:</strong> A Mixture-of-Experts student is distilled from multiple frozen vision teachers (SigLIP2 and DINOv3).
         </p>
     </div>
 
     <p class="abstract-text">
-        Vision foundation models trained via multi-teacher distillation offer a promising path toward unified visual representations. We introduce <strong>AMoE</strong> (Agglomerative Mixture-of-Experts), which distills knowledge from <strong>SigLIP2</strong> and <strong>DINOv3</strong> simultaneously into a single Mixture-of-Experts student. We show that:
+        Vision foundation models trained via multi-teacher distillation offer a promising path toward unified visual representations. We introduce <strong>AMoE</strong> (Agglomerative Mixture-of-Experts), which distills knowledge from <strong>SigLIP2</strong> and <strong>DINOv3</strong> simultaneously into a single Mixture-of-Experts student.
     </p>
     <ul>
-        <li><strong>OpenLVD200M</strong>, a curated 200M-image corpus, substantially improves sample efficiency over random sampling.</li>
-        <li><strong>Token-balanced batching</strong> stabilizes representation learning across resolutions.</li>
-        <li>Our <strong>Asymmetric Relation-Knowledge Distillation (ARKD)</strong> loss preserves the geometric properties of each teacher while enabling effective knowledge transfer.</li>
+        <li><strong>OpenLVD200M:</strong> A curated 200M-image corpus, substantially improving sample efficiency over random sampling.</li>
+        <li><strong>Token-balanced batching:</strong> Stabilizes representation learning across resolutions.</li>
+        <li><strong>Asymmetric Relation-Knowledge Distillation (ARKD):</strong> Preserves the geometric properties of each teacher while enabling effective knowledge transfer.</li>
     </ul>
     <p>
         Instantiated in a Mixture-of-Experts backbone, AMoE sets a new state-of-the-art on global representation and retrieval benchmarks while using significantly fewer tokens than competitors like RADIOv2.5.
@@ -68,7 +78,7 @@
 <section id="method">
     <h2>AMoE Framework</h2>
     
-    <h3>State-of-the-Art Comparison</h3>
+    <h3>// State-of-the-Art Comparison</h3>
     <p>AMoE outperforms RADIOv2.5-H while using significantly fewer tokens (4.7x less).</p>
     <table>
         <thead>
@@ -92,33 +102,33 @@
         </tbody>
     </table>
 
-    <h3>Ensembling Strategy</h3>
+    <h3>// Ensembling Strategy</h3>
     <p>
-        To leverage the complementary strengths of our teachers, we employ an entropy-weighted head-ensembling strategy at test time. For each input, we compute the entropy of the prediction distribution from each teacher head (SigLIP2 and DINOv3). Heads with lower entropy (higher confidence) are assigned higher weights, allowing the model to dynamically select the most reliable expert for the given image.
+        To leverage the complementary strengths of our teachers, we employ an entropy-weighted head-ensembling strategy at test time. For each input, we compute the entropy of the prediction distribution from each teacher head (SigLIP2 and DINOv3). Heads with lower entropy (higher confidence) are assigned higher weights.
     </p>
     
-    <h3>Key Contributions</h3>
+    <h3>// Key Contributions</h3>
     <div class="flex-row">
         <div class="flex-col">
-            <h4>OpenLVD200M Dataset</h4>
+            <h4>01. OpenLVD200M Dataset</h4>
             <p>
-                We introduce <strong>OpenLVD200M</strong>, a curated 200M-image corpus constructed via hierarchical clustering. It provides balanced coverage of visual concepts, substantially improving sample efficiency over random sampling.
+                We introduce <strong>OpenLVD200M</strong>, a curated 200M-image corpus constructed via hierarchical clustering. It provides balanced coverage of visual concepts.
             </p>
         </div>
         <div class="flex-col">
-            <h4>MoE Architecture</h4>
+            <h4>02. MoE Architecture</h4>
             <p>
                 We use a Mixture-of-Experts (MoE) backbone to effectively absorb complementary signals from different teachers.
             </p>
         </div>
         <div class="flex-col">
-            <h4>Token-Balanced Batching</h4>
+            <h4>03. Token-Balanced Batching</h4>
             <p>
                 We employ token-balanced batching to stabilize training across varying resolutions, packing images to a fixed token budget.
             </p>
         </div>
         <div class="flex-col">
-            <h4>Asymmetric RKD (ARKD)</h4>
+            <h4>04. Asymmetric RKD</h4>
             <p>
                 We introduce ARKD to preserve the pairwise geometry of teacher embeddings. Unlike standard relational distillation, ARKD is asymmetric.
             </p>
@@ -128,7 +138,7 @@
     <div class="figure-container">
         <img src="figures/token_balanced_batching%20(3).png" alt="Token Balanced Batching">
         <p class="caption">
-            <strong>Token-balanced batching:</strong> Packing multiple native-resolution images per sequence up to a fixed token budget prevents low-res forgetting and improves performance.
+            <strong>FIG. 2:</strong> Packing multiple native-resolution images per sequence up to a fixed token budget prevents low-res forgetting and improves performance.
         </p>
     </div>
 </section>
@@ -136,12 +146,12 @@
 <section id="dataset">
     <h2>OpenLVD200M Dataset</h2>
     
-    <h3>Construction</h3>
+    <h3>// Construction</h3>
     <p>
-        We construct OpenLVD200M to mitigate the long-tail distribution inherent in web-scale data. Inspired by the hierarchical clustering and sampling technique from <em>Vo et al. (2024)</em>, we process a 2.3B-image pool (combining DFN and LAION) to learn a semantic hierarchy of visual concepts. By sampling uniformly across these semantic clusters rather than the raw data distribution, we ensure balanced coverage of both common and rare concepts, which is critical for effective multi-teacher distillation.
+        We construct OpenLVD200M to mitigate the long-tail distribution inherent in web-scale data. Inspired by the hierarchical clustering and sampling technique from <em>Vo et al. (2024)</em>, we process a 2.3B-image pool (combining DFN and LAION) to learn a semantic hierarchy of visual concepts. By sampling uniformly across these semantic clusters rather than the raw data distribution, we ensure balanced coverage of both common and rare concepts.
     </p>
 
-    <h3>Ablation: OpenLVD vs. Random Sampling</h3>
+    <h3>// Ablation: OpenLVD vs. Random Sampling</h3>
     <table>
         <thead>
             <tr>
@@ -176,45 +186,45 @@
 
     <h3>1. Expert Specialization (CKA Analysis)</h3>
     <p>
-        To investigate the semantic specialization of individual experts within the student model, we analyze the similarity between the representations routed to each expert and the hierarchical features of our teacher models using Linear Centered Kernel Alignment (CKA). This metric allows us to compare representation spaces of differing dimensions and identify which experts specialize in which teacher's features.
+        We analyze the similarity between the representations routed to each expert and the hierarchical features of our teacher models using Linear Centered Kernel Alignment (CKA).
     </p>
     <div class="figure-container">
         <img src="figures/linear_cka_2.svg" alt="CKA Analysis">
         <p class="caption">
-            <strong>Linear CKA alignments:</strong> Visualization of alignment between MoE experts and teacher layers. Early layers specialize in specific teachers (e.g., E4 for DINOv3, E5 for SigLIP2), while deeper layers adapt to handle high-magnitude activations from SigLIP2. This confirms that MoE experts specialize to handle conflicting teacher signals.
+            <strong>FIG. 3:</strong> Visualization of alignment between MoE experts and teacher layers. Early layers specialize in specific teachers (e.g., E4 for DINOv3, E5 for SigLIP2).
         </p>
     </div>
 
     <h3>2. Register PHI-S Impact</h3>
     <p>
-        We analyze the effectiveness of PHI-S normalization on different token types. While effective for global and patch tokens, we find that the first register token in DINOv3 exhibits a multi-mode distribution. Standard moment estimation fails to capture this structure, leading to incorrect normalization and training instability.
+        We analyze the effectiveness of PHI-S normalization on different token types. While effective for global and patch tokens, we find that the first register token in DINOv3 exhibits a multi-mode distribution.
     </p>
     <div class="figure-container">
         <img src="figures/phis_pca_maps.png" alt="PHI-S PCA Maps">
         <p class="caption">
-            <strong>PHI-S Normalization Analysis:</strong> We analyze the impact of PHI-S on DINOv3 registers. The first register (Row 4) exhibits multi-mode distributions which standard PHI-S fails to normalize correctly, leading to training instability. We thus exclude registers from PHI-S.
+            <strong>FIG. 4:</strong> The first register (Row 4) exhibits multi-mode distributions which standard PHI-S fails to normalize correctly, leading to training instability.
         </p>
     </div>
 
     <h3>3. RoPE Impact: Golden vs Axial</h3>
     <p>
-        We evaluate the generalization capabilities of our Golden-RoPE strategy against standard Axial RoPE when extrapolating to unseen high resolutions. By normalizing input coordinates based on aspect ratio, Golden-RoPE ensures that the relative frequency distribution remains consistent, preventing the feature degradation observed with fixed integer indices.
+        We evaluate the generalization capabilities of our Golden-RoPE strategy against standard Axial RoPE when extrapolating to unseen high resolutions.
     </p>
     <div class="figure-container">
         <img src="figures/golden_rope.png" alt="Golden Rope vs Axial">
         <p class="caption">
-            <strong>Positional Encoding:</strong> Comparison of feature map consistency across resolutions. Golden RoPE (normalized coordinates) maintains strong scale invariance and feature coherence even at unseen resolutions ($2048 \times 2048$), whereas standard Axial RoPE degrades.
+            <strong>FIG. 5:</strong> Golden RoPE (normalized coordinates) maintains strong scale invariance and feature coherence even at unseen resolutions ($2048 \times 2048$).
         </p>
     </div>
     
-    <h3>4. PCA Visualizations: AMoE vs Teachers</h3>
+    <h3>4. PCA Visualizations</h3>
     <p>
-        We provide a qualitative comparison of the learned student representations against the original teacher features. By visualizing the PCA projections, we can assess how well the AMoE student synthesizes the complementary strengths of SigLIP2 (text alignment) and DINOv3 (geometric structure).
+        We provide a qualitative comparison of the learned student representations against the original teacher features.
     </p>
     <div class="figure-container">
         <img src="figures/teachers_gt.png" alt="Teacher GT">
         <p class="caption">
-            <strong>Qualitative Comparison:</strong> PCA maps showing the student (AMoE) closely reconstructing the teacher distributions. The student retains SigLIP2's text-aware features and DINOv3's geometric consistency.
+            <strong>FIG. 6:</strong> PCA maps showing the student (AMoE) closely reconstructing the teacher distributions. The student retains SigLIP2's text-aware features and DINOv3's geometric consistency.
         </p>
     </div>
 </section>
@@ -222,7 +232,7 @@
 <section id="results">
     <h2>Results & Ablations</h2>
     
-    <h3>Retrieval Performance (Recall@1)</h3>
+    <h3>// Retrieval Performance (Recall@1)</h3>
     <table>
         <thead>
             <tr>
@@ -256,7 +266,7 @@
         </tbody>
     </table>
 
-    <h3>Ablation: Impact of ARKD</h3>
+    <h3>// Ablation: Impact of ARKD</h3>
     <table>
         <thead>
             <tr>
@@ -291,10 +301,9 @@
 
 <!--
 <footer>
-    <p>&copy; 2026 AMoE Project. All rights reserved.</p>
+    <p>// AMoE Project &copy; 2026</p>
 </footer>
 -->
 
 </body>
 </html>
-
