@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AMoE: Agglomerative Mixture-of-Experts</title>
     <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
 
@@ -17,7 +18,7 @@
     </div>
     
     <div class="links">
-        <!-- Paper Link (Cleaned SVG) -->
+        <!-- Paper Link -->
         <a href="#" class="btn-link">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17.732 24.269">
                 <g transform="translate(-566.984 -271.548)">
@@ -39,7 +40,7 @@
 
         <!-- Models Link -->
         <a href="#" class="btn-link">
-            <span style="font-size: 1.2em; margin-right: 5px; filter: grayscale(100%);">🤗</span>
+            <span style="font-size: 1.2em; margin-right: 5px;">🤗</span>
             Models
         </a>
 
@@ -184,49 +185,109 @@
 <section id="analysis">
     <h2>In-Depth Analysis</h2>
 
-    <h3>1. Expert Specialization (CKA Analysis)</h3>
+    <h3>1. RoPE Impact: Golden vs Axial</h3>
     <p>
-        We analyze the similarity between the representations routed to each expert and the hierarchical features of our teacher models using Linear Centered Kernel Alignment (CKA).
+        We evaluate the generalization capabilities of our Golden-RoPE strategy against standard Axial RoPE when extrapolating to unseen high resolutions.
     </p>
-    <div class="figure-container">
-        <img src="figures/linear_cka_2.svg" alt="CKA Analysis">
+
+    <!-- Interactive RoPE Figure -->
+    <div class="figure-container interactive-figure">
+        <div class="figure-header">
+            <div class="sample-nav">
+                <button id="prevRoPESample" class="nav-btn">&lt; PREV</button>
+                <span id="ropeSampleIndicator">SAMPLE 1/3</span>
+                <button id="nextRoPESample" class="nav-btn">NEXT &gt;</button>
+            </div>
+        </div>
+        
+        <div class="rope-grid">
+            <div class="grid-header empty"></div>
+            <div class="grid-header">Original</div>
+            <div class="grid-header">256x256</div>
+            <div class="grid-header">768x768</div>
+            <div class="grid-header">2048x2048</div>
+
+            <!-- Golden Row -->
+            <div class="grid-label">
+                <div class="label-text">Normalized Coordinates<br></div>
+            </div>
+            <div class="grid-img rowspan-2"><img id="rope-original" src="" alt="Original Image"></div>
+            <div class="grid-img"><img id="golden-256" src="" alt="Golden 256"></div>
+            <div class="grid-img"><img id="golden-768" src="" alt="Golden 768"></div>
+            <div class="grid-img"><img id="golden-2048" src="" alt="Golden 2048"></div>
+
+            <!-- Axial Row -->
+            <div class="grid-label">
+                <div class="label-text">Standard Axial RoPE<br></div>
+            </div>
+            <!-- Original image spans 2 rows, so no img here -->
+            <div class="grid-img"><img id="axial-256" src="" alt="Axial 256"></div>
+            <div class="grid-img"><img id="axial-768" src="" alt="Axial 768"></div>
+            <div class="grid-img"><img id="axial-2048" src="" alt="Axial 2048"></div>
+        </div>
+
         <p class="caption">
-            <strong>FIG. 3:</strong> Visualization of alignment between MoE experts and teacher layers. Early layers specialize in specific teachers (e.g., E4 for DINOv3, E5 for SigLIP2).
+            <strong>FIG. 3:</strong> Comparison of feature map consistency across resolutions. Golden RoPE (normalized coordinates) maintains strong scale invariance and feature coherence even at unseen resolutions ($2048 \times 2048$), whereas standard Axial RoPE degrades. Use arrows to switch samples.
+        </p>
+    </div>
+    
+    <h3>2. PCA Visualizations</h3>
+    <p>
+        We provide a qualitative comparison of the learned student representations against the original teacher features.
+    </p>
+    
+    <!-- Interactive PCA Figure -->
+    <div class="figure-container interactive-figure">
+        <div class="figure-header">
+            <div class="sample-nav">
+                <button id="prevPCASample" class="nav-btn">&lt; PREV</button>
+                <span id="pcaSampleIndicator">SAMPLE 1/5</span>
+                <button id="nextPCASample" class="nav-btn">NEXT &gt;</button>
+            </div>
+        </div>
+        
+        <div class="pca-grid">
+            <!-- Headers -->
+            <div class="grid-header">Original Image</div>
+            <div class="grid-header">AMoE Map</div>
+            
+            <!-- Original & AMoE -->
+            <div class="grid-img"><img id="pca-original" src="" alt="Original Image"></div>
+            <div class="grid-img"><img id="pca-amoe" src="" alt="AMoE Map"></div>
+
+            <!-- Headers for Teachers -->
+            <div class="grid-header">DINOv3 Teacher</div>
+            <div class="grid-header">DINOv3 Head (AMoE)</div>
+
+            <!-- DINO Row -->
+            <div class="grid-img"><img id="pca-dino" src="" alt="DINOv3 Teacher"></div>
+            <div class="grid-img"><img id="pca-dino-head" src="" alt="DINOv3 Head"></div>
+
+            <!-- Headers for Teachers -->
+            <div class="grid-header">SigLIP2 Teacher</div>
+            <div class="grid-header">SigLIP2 Head (AMoE)</div>
+
+            <!-- SigLIP Row -->
+            <div class="grid-img"><img id="pca-siglip" src="" alt="SigLIP2 Teacher"></div>
+            <div class="grid-img"><img id="pca-siglip-head" src="" alt="SigLIP2 Head"></div>
+        </div>
+
+        <p class="caption">
+            <strong>FIG. 4:</strong> PCA maps showing the student (AMoE) closely reconstructing the teacher distributions. The student retains SigLIP2's text-aware features and DINOv3's geometric consistency. Use arrows to switch samples.
         </p>
     </div>
 
-    <h3>2. Register PHI-S Impact</h3>
+    <h3>3. Register PHI-S Impact</h3>
     <p>
         We analyze the effectiveness of PHI-S normalization on different token types. While effective for global and patch tokens, we find that the first register token in DINOv3 exhibits a multi-mode distribution.
     </p>
     <div class="figure-container">
         <img src="figures/phis_pca_maps.png" alt="PHI-S PCA Maps">
         <p class="caption">
-            <strong>FIG. 4:</strong> The first register (Row 4) exhibits multi-mode distributions which standard PHI-S fails to normalize correctly, leading to training instability.
+            <strong>FIG. 5:</strong> The first register (Row 4) exhibits multi-mode distributions which standard PHI-S fails to normalize correctly, leading to training instability.
         </p>
     </div>
 
-    <h3>3. RoPE Impact: Golden vs Axial</h3>
-    <p>
-        We evaluate the generalization capabilities of our Golden-RoPE strategy against standard Axial RoPE when extrapolating to unseen high resolutions.
-    </p>
-    <div class="figure-container">
-        <img src="figures/golden_rope.png" alt="Golden Rope vs Axial">
-        <p class="caption">
-            <strong>FIG. 5:</strong> Golden RoPE (normalized coordinates) maintains strong scale invariance and feature coherence even at unseen resolutions ($2048 \times 2048$).
-        </p>
-    </div>
-    
-    <h3>4. PCA Visualizations</h3>
-    <p>
-        We provide a qualitative comparison of the learned student representations against the original teacher features.
-    </p>
-    <div class="figure-container">
-        <img src="figures/teachers_gt.png" alt="Teacher GT">
-        <p class="caption">
-            <strong>FIG. 6:</strong> PCA maps showing the student (AMoE) closely reconstructing the teacher distributions. The student retains SigLIP2's text-aware features and DINOv3's geometric consistency.
-        </p>
-    </div>
 </section>
 
 <section id="results">
@@ -299,11 +360,9 @@
     </table>
 </section>
 
-<!--
 <footer>
     <p>// AMoE Project &copy; 2026</p>
 </footer>
--->
 
 </body>
 </html>
