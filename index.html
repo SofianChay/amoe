@@ -81,7 +81,7 @@
     <h2>AMoE Framework</h2>
     
     <h3>// State-of-the-Art Comparison</h3>
-    <p>AMoE outperforms RADIOv2.5-H while using significantly fewer tokens (4.7x less).</p>
+    <p>AMoE (0.3B active/ 0.6B total parameters) outperforms RADIOv2.5-H (0.6B parameters) on global representation tasks while using more than 4x less tokens during training.</p>
     <table>
         <thead>
             <tr>
@@ -92,47 +92,42 @@
         </thead>
         <tbody>
             <tr>
-                <td>RADIOv2.5-H (Ensemble)</td>
+                <td>RADIOv2.5-H</td>
                 <td>82.26</td>
                 <td>84.42</td>
             </tr>
             <tr>
-                <td class="highlight">AMoE (Ensemble)</td>
+                <td class="highlight">AMoE</td>
                 <td class="highlight">84.13</td>
                 <td class="highlight">87.44</td>
             </tr>
         </tbody>
     </table>
-
-    <h3>// Ensembling Strategy</h3>
-    <p>
-        To leverage the complementary strengths of our teachers, we employ an entropy-weighted head-ensembling strategy at test time. For each input, we compute the entropy of the prediction distribution from each teacher head (SigLIP2 and DINOv3). Heads with lower entropy (higher confidence) are assigned higher weights.
-    </p>
     
     <h3>// Key Contributions</h3>
     <div class="flex-row">
         <div class="flex-col">
             <h4>01. OpenLVD200M Dataset</h4>
             <p>
-                We introduce <strong>OpenLVD200M</strong>, a curated 200M-image corpus constructed via hierarchical clustering. It provides balanced coverage of visual concepts.
+                We introduce <strong>OpenLVD200M</strong>, a curated 200M-image corpus constructed via hierarchical clustering. It provides balanced coverage of visual concepts and demonstrate its effectiveness on Multi-Teacher distillation.
             </p>
         </div>
         <div class="flex-col">
             <h4>02. MoE Architecture</h4>
             <p>
-                We use a Mixture-of-Experts (MoE) backbone to effectively absorb complementary signals from different teachers.
+                We use a Mixture-of-Experts (MoE) backbone to learn complementary signals from different teachers.
             </p>
         </div>
         <div class="flex-col">
             <h4>03. Token-Balanced Batching</h4>
             <p>
-                We employ token-balanced batching to stabilize training across varying resolutions, packing images to a fixed token budget.
+                We use token-balanced batching to stabilize training across varying resolutions, packing images to a fixed token budget.
             </p>
         </div>
         <div class="flex-col">
             <h4>04. Asymmetric RKD</h4>
             <p>
-                We introduce ARKD to preserve the pairwise geometry of teacher embeddings. Unlike standard relational distillation, ARKD is asymmetric.
+                We introduce ARKD to preserve the pairwise geometry of teacher embeddings.
             </p>
         </div>
     </div>
@@ -188,9 +183,8 @@
 
     <h3>1. RoPE Impact: Golden vs Axial</h3>
     <p>
-        We evaluate the generalization capabilities of our Golden-RoPE strategy against standard Axial RoPE when extrapolating to unseen high resolutions.
+        We investigate the impact of the Rotary Positional Embedding (RoPE) strategy on the student's ability to generalize to unseen high resolutions. Specifically, we compare the standard Axial RoPE against normalizing the input coordinates based on the image aspect ratio (mapping coordinates roughly to [-1, 1]) rather than using absolute integer indices. Specifically, we use <strong>Golden RoPE</strong> <a href="https://jerryxio.ng/posts/nd-rope/" target="_blank">[Xiong, 2025]</a>.
     </p>
-
     <!-- Interactive RoPE Figure -->
     <div class="figure-container interactive-figure">
         <div class="figure-header">
@@ -280,7 +274,7 @@
 
     <h3>3. Register PHI-S Impact</h3>
     <p>
-        We analyze the effectiveness of PHI-S normalization on different token types. While effective for global and patch tokens, we find that the first register token in DINOv3 exhibits a multi-mode distribution.
+    We analyze the effectiveness of PHI-S (<em>Ranzinger et al. 2024</em>) normalization on different token types. While effective for global and patch tokens, we find that the first register token in DINOv3 exhibits a multi-mode distribution which prevents from correctly estimating the transform.
     </p>
     <div class="figure-container">
         <img src="figures/phis_pca_maps.png" alt="PHI-S PCA Maps">
@@ -288,82 +282,3 @@
             <strong>FIG. 5:</strong> The first register (Row 4) exhibits multi-mode distributions which standard PHI-S fails to normalize correctly, leading to training instability.
         </p>
     </div>
-
-</section>
-
-<section id="results">
-    <h2>Results & Ablations</h2>
-    
-    <h3>// Retrieval Performance (Recall@1)</h3>
-    <table>
-        <thead>
-            <tr>
-                <th>Method</th>
-                <th colspan="2">MSCOCO5k</th>
-                <th colspan="2">Flickr30k</th>
-            </tr>
-            <tr>
-                <th></th>
-                <th>T2I</th>
-                <th>I2T</th>
-                <th>T2I</th>
-                <th>I2T</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>RADIOv2.5-H (Ens)</td>
-                <td>53.24</td>
-                <td>71.82</td>
-                <td>80.96</td>
-                <td>93.50</td>
-            </tr>
-            <tr>
-                <td class="highlight">AMoE (Ens)</td>
-                <td class="highlight">53.98</td>
-                <td class="highlight">72.14</td>
-                <td class="highlight">81.20</td>
-                <td class="highlight">94.30</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <h3>// Ablation: Impact of ARKD</h3>
-    <table>
-        <thead>
-            <tr>
-                <th>Loss Variant</th>
-                <th>Image-Text Avg</th>
-                <th>kNN Avg</th>
-                <th>MSCOCO T2I</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Vanilla MT (No RKD)</td>
-                <td>77.62</td>
-                <td>83.54</td>
-                <td>48.15</td>
-            </tr>
-            <tr>
-                <td>Symmetric RKD</td>
-                <td>79.49</td>
-                <td>82.61</td>
-                <td>48.32</td>
-            </tr>
-            <tr>
-                <td class="highlight">Asymmetric RKD (Ours)</td>
-                <td class="highlight">80.21</td>
-                <td class="highlight">83.63</td>
-                <td class="highlight">48.51</td>
-            </tr>
-        </tbody>
-    </table>
-</section>
-
-<footer>
-    <p>// AMoE</p>
-</footer>
-
-</body>
-</html>
