@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AMoE: Agglomerative Mixture-of-Experts</title>
+    <title>SigLino: Efficient Multi-Teacher Distillation for Agglomerative Vision Foundation Models</title>
     <!-- Add or increment the version query parameter -->
     <link rel="stylesheet" href="style.css?v=2.0">
     <script src="script.js?v=2.0" defer></script>
@@ -11,8 +11,8 @@
 <body>
 
 <header>
-    <h1>AMoE</h1>
-    <div class="subtitle" style="margin-bottom: 10px; color: #fff;">Agglomerative Mixture-of-Experts Vision Foundation Model</div>
+    <h1>SigLino</h1>
+    <div class="subtitle" style="margin-bottom: 10px; color: #fff;">Efficient Multi-Teacher Distillation for Agglomerative Vision Foundation Models</div>
     <div class="subtitle" style="margin-bottom: 20px; color: #ffd700; font-weight: bold;">Accepted at CVPR 2026</div>
     
     <div class="authors">
@@ -65,7 +65,7 @@
     </div>
 
     <p class="abstract-text">
-        Vision foundation models trained via multi-teacher distillation offer a promising path toward unified visual representations. We introduce <strong>AMoE</strong> (Agglomerative Mixture-of-Experts), which distills knowledge from <strong>SigLIP2</strong> and <strong>DINOv3</strong> simultaneously into a single Mixture-of-Experts student.
+        Vision foundation models trained via multi-teacher distillation offer a promising path toward unified visual representations. We introduce <strong>SigLino</strong>, an efficient family of agglomerative vision foundation models that distill knowledge from <strong>SigLIP2</strong> and <strong>DINOv3</strong> simultaneously into a series of student models — both <strong>Dense</strong> and <strong>Mixture-of-Experts (MoE)</strong> variants.
     </p>
     <ul>
         <li><strong>OpenLVD200M:</strong> A curated 200M-image corpus, substantially improving sample efficiency over random sampling.</li>
@@ -73,15 +73,15 @@
         <li><strong>Asymmetric Relation-Knowledge Distillation (ARKD):</strong> Preserves the geometric properties of each teacher while enabling effective knowledge transfer.</li>
     </ul>
     <p>
-        Instantiated in a Mixture-of-Experts backbone, AMoE sets a new state-of-the-art on global representation and retrieval benchmarks while using significantly fewer tokens than competitors like RADIOv2.5.
+        Instantiated in both Dense and Mixture-of-Experts backbones, SigLino sets a new state-of-the-art on global representation and retrieval benchmarks while using significantly fewer tokens than competitors like RADIOv2.5.
     </p>
 </section>
 
 <section id="method">
-    <h2>AMoE Framework</h2>
-    
+    <h2>SigLino Framework</h2>
+
     <h3>// State-of-the-Art Comparison</h3>
-    <p>AMoE (0.3B active/ 0.6B total parameters) outperforms RADIOv2.5-H (0.6B parameters) on global representation tasks while using more than 4x less tokens during training.</p>
+    <p>SigLino-MoE (0.3B active/ 0.6B total parameters) outperforms RADIOv2.5-H (0.6B parameters) on global representation tasks while using more than 4x less tokens during training.</p>
     <table>
         <thead>
             <tr>
@@ -97,7 +97,7 @@
                 <td>84.42</td>
             </tr>
             <tr>
-                <td class="highlight">AMoE</td>
+                <td class="highlight">SigLino-MoE</td>
                 <td class="highlight">84.13</td>
                 <td class="highlight">87.44</td>
             </tr>
@@ -244,15 +244,15 @@
         <div class="pca-grid">
             <!-- Headers -->
             <div class="grid-header">Original Image</div>
-            <div class="grid-header">AMoE Map</div>
+            <div class="grid-header">SigLino Map</div>
             
             <!-- Original & AMoE -->
             <div class="grid-img"><img id="pca-original" src="" alt="Original Image"></div>
-            <div class="grid-img"><img id="pca-amoe" src="" alt="AMoE Map"></div>
+            <div class="grid-img"><img id="pca-amoe" src="" alt="SigLino Map"></div>
 
             <!-- Headers for Teachers -->
             <div class="grid-header">DINOv3 Teacher</div>
-            <div class="grid-header">DINOv3 Head (AMoE)</div>
+            <div class="grid-header">DINOv3 Head (SigLino)</div>
 
             <!-- DINO Row -->
             <div class="grid-img"><img id="pca-dino" src="" alt="DINOv3 Teacher"></div>
@@ -260,7 +260,7 @@
 
             <!-- Headers for Teachers -->
             <div class="grid-header">SigLIP2 Teacher</div>
-            <div class="grid-header">SigLIP2 Head (AMoE)</div>
+            <div class="grid-header">SigLIP2 Head (SigLino)</div>
 
             <!-- SigLIP Row -->
             <div class="grid-img"><img id="pca-siglip" src="" alt="SigLIP2 Teacher"></div>
@@ -268,7 +268,7 @@
         </div>
 
         <p class="caption">
-            <strong>FIG. 4:</strong> PCA maps showing the student (AMoE) closely reconstructing the teacher distributions. The student retains SigLIP2's text-aware features and DINOv3's geometric consistency. Use arrows to switch samples.
+            <strong>FIG. 4:</strong> PCA maps showing the student (SigLino) closely reconstructing the teacher distributions. The student retains SigLIP2's text-aware features and DINOv3's geometric consistency. Use arrows to switch samples.
         </p>
     </div>
 
